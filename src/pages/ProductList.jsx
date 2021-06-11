@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Icon, Label, Menu, Table } from "semantic-ui-react";
 import ProductService from "../Services/productService";
+import {Link}  from "react-router-dom";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -24,7 +25,11 @@ export default function ProductList() {
 
 
 
-  }, [])
+  }, [])  //=>bunu yapmayınca networke sürekli istekde bulunuyor.
+  // bir nesnenin her değişikliğe uğradığında sayfanın yeninden render edilmesini istersek,
+  // burada onu o array içine yazarak (state bilgisini) takibini yapabiliyoruz. aksi takdirde elemanlar değişiğinde yeni istek atıyor.
+  // ürünler değişiyor. state değiştiği için yeniden istek atıyor vs. hooklarda çalışırken, bunları eklemek önemli.
+  
 
   return (
     // hareketli kısım kanımca
@@ -48,7 +53,7 @@ export default function ProductList() {
             // data değiştiği anda, yenisi render ediliuor.
             products.map((product) => (
               <Table.Row key={product.id}>
-                <Table.Cell>{product.productName}</Table.Cell>
+                <Table.Cell><Link to={`/products/${product.productName}`}>{product.productName}</Link></Table.Cell>
                 <Table.Cell>{product.unitPrice}</Table.Cell>
                 <Table.Cell>{product.unitsInStock}</Table.Cell>
                 <Table.Cell>{product.quantityPerUnit}</Table.Cell>
