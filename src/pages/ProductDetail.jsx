@@ -24,10 +24,10 @@ export default function ProductDetail() {
             <Image
               floated="right"
               size="mini"
-              src="/images/avatar/large/steve.jpg"
+              src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
             />
             <Card.Header>{product.productName}</Card.Header>
-            <Card.Meta>{product.category.categoryName}</Card.Meta>
+            <Card.Meta>{product.category?.categoryName}</Card.Meta>
             <Card.Description>
               Steve wants to add you to the group <strong>best friends</strong>
             </Card.Description>

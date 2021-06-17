@@ -4,11 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import {Provider} from "react-redux";
+import { configureStore } from './store/configureStore';
 
-ReactDOM.render(  // sanal bir virtual dom
-  // <React.StrictMode>
-   <BrowserRouter> <App /></BrowserRouter> ,
-  // </React.StrictMode>,
+
+const store = configureStore()
+
+// sanal bir virtual dom
+
+ReactDOM.render(   // tüm uygulamayı provider ile sarmalla diyorum (react-redux ile) burada bir store geç diyorum
+  <Provider store={store}>  
+   <BrowserRouter> <App /></BrowserRouter> 
+   </Provider>,
   document.getElementById('root')
 );
 

@@ -1,0 +1,21 @@
+store: mağaza
+
+initial values : başlangıç (ör : çılgın çubuk kraker)
+
+actions : işlem yapan fonksiyon (örnek sepete at/ekleme işlemi)
+
+reducer : state'in değeri. sepetimizin son değeri. ilk etapta boş. 
+
+** action=> reducerlara gönderdiğin operasyonlar. reducer gönderilen aksiyon hangi state de var. ben onu tetikleyim diyor.
+
+Store => actions var. butona tıkladığımızda biz aslında sepete ekleme action'ını çağırmış olacaz.
+Store da yine state'ı tutan reducerlarımız var. ben bu reducer' add to cart acitonının göndercem
+Add to cart i gönderdiğin anda, bu actionları bellekte tutuyor aslında. bu action'ın hangi reducer da çağırlıdığına bakıyor.
+bu reducer'ın içerisine gönderdiğimiz için, addTocart' a göre ne işlemi yapıldğına bakıyor (sepete ekleme)
+
+biz buraya iki şey gönderiyoruz aslında. 1) aksiyonun tipini, 2.sinde de veri var mı diye bakıyor.(payload kısmında)
+
+// ** bu yaptığımız şey, bir yerde birşey olduğunda, diğer componente haber vermek için yapılmış bir durum.
+
+
+// cqrs(comment query request pattern) = bir fonksiyon'u parametre olarak gönderiyoruz. comment pattern implementasyonu => araştır ?

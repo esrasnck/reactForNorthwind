@@ -1,17 +1,29 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { Dropdown} from "semantic-ui-react";
+import { Dropdown,Label} from "semantic-ui-react";
+import { useSelector } from 'react-redux';
 
-export default function () {
-  // sepete git e tıkladığımda sepete gitmek istiyorum. react router dom dan gelen bir element ile bunu yapıyoruz.
+export default function CartSummary() { 
+
+const {cartItems} = useSelector(state => state.cart)  // state deki cartItems'i çekecez
 
     return (
         <div>
              <Dropdown item text="Sepetiniz">
               <Dropdown.Menu>
-                <Dropdown.Item>Acer Laptop</Dropdown.Item>
-                <Dropdown.Item>Asus Laptop</Dropdown.Item>
-                <Dropdown.Item>Dell Laptop</Dropdown.Item>
+                {
+                  cartItems.map((cartItem)=> (
+
+                      <Dropdown.Item>
+                        {cartItem.product.productName}
+                        <Label>{cartItem.quantity}</Label>
+                      </Dropdown.Item>
+                    
+                  ))
+
+                }
+              
+             
                 <Dropdown.Divider/>
                 <Dropdown.Item as={NavLink} to="/cart">Sepete Git</Dropdown.Item>
               </Dropdown.Menu>
@@ -19,3 +31,4 @@ export default function () {
         </div>
     )
 }
+  // sepete git e tıkladığımda sepete gitmek istiyorum. react router dom dan gelen bir element ile bunu yapıyoruz.

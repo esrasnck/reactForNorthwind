@@ -4,6 +4,7 @@ import { Container, Menu } from "semantic-ui-react";
 import CartSummary from "./CartSummary";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
+import { useSelector } from "react-redux";
 
 export default function Navi() {
   // const diyerek destructor işlemi gerçekleştirecez  => initialState öncekinde ürünler olduğu için, state'i boş arraydi. fakat bu durumda
@@ -11,6 +12,7 @@ export default function Navi() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(true)
   const history = useHistory()
+  const {cartItems} = useSelector(state => state.cart) 
 
   function handleSignOut(){ // çıkış yapma işlemini handle edecez.
       
@@ -31,7 +33,7 @@ export default function Navi() {
           <Menu.Item name="home" />
           <Menu.Item name="messages" />
           <Menu.Menu position="right">
-              <CartSummary></CartSummary>
+             {cartItems.length>0 && <CartSummary/>}
               { // angularda ngIf ile yapıyordur. burada js kullanacaz. isAuthenticated ve setIsAuthenticated'ı destructe yapacaz.
                 // useState bize ayrı ayrı iki tane bilgi geçiyor. biz de onu destructe ediyoruz.
                 // çıkış yapa bastığımda, isAuthenticated'ı değiştirmem gerekiyordu. onu değiştiren fonksiyon, setIsAuthenticated

@@ -1,0 +1,1 @@
+//bunu karşılayacak reducerlar  (user actionını) burada olacak
