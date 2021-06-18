@@ -12,6 +12,7 @@ function App() {   // app isimli bir component arıyor arkadas
     <Container className="main">
        
       <Dashboard/>
+      
       </Container>
 
     </div>

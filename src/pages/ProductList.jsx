@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import { Icon, Menu, Button, Table } from "semantic-ui-react";
 import ProductService from "../Services/productService";
 import {Link}  from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {addToCart} from "../store/actions/cartActions"
+import { toast } from "react-toastify";
 
 export default function ProductList() {
+   
+   const dispatch = useDispatch()   // bu benden çalıştıracağım fonksiyonun ismini istiyor
+
+   const handleAddToCart=(product)=>{
+     dispatch(addToCart(product))
+     toast.success(`${product.productName} sepete eklendi !`,{ position: toast.POSITION.BOTTOM_RIGHT,})
+
+   }
+
   const [products, setProducts] = useState([]);
 
   //  const [state, setstate] = useState(initialState) // intialState başlangıç durumu. datanın başlangıcı boş array
@@ -42,6 +54,7 @@ export default function ProductList() {
             <Table.HeaderCell>Stok Adedi</Table.HeaderCell>
             <Table.HeaderCell>Açıklama </Table.HeaderCell>
             <Table.HeaderCell>Kategori </Table.HeaderCell>
+            <Table.HeaderCell>Sepete Ekle </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -58,6 +71,7 @@ export default function ProductList() {
                 <Table.Cell>{product.unitsInStock}</Table.Cell>
                 <Table.Cell>{product.quantityPerUnit}</Table.Cell>
                 <Table.Cell>{product.category.categoryName}</Table.Cell>
+                <Table.Cell><Button onClick={()=>handleAddToCart(product)}>Sepete Ekle</Button></Table.Cell>
               </Table.Row>
             ))
           }
@@ -87,3 +101,11 @@ export default function ProductList() {
 }
 
 // ürünler bizim için bu sayfadaki state datasıdır. Bunun için hook tekniğini kullancağız.
+
+
+// aksiyonlara abone olmak için kullanılan hook : useDispatch
+
+// dispatch : fonksiyon çağırmak için kullanılan fonksiyon (reflection gibi)
+
+
+// <Table.Cell><Button onClick={()=>handleAddToCart(product)}>Sepete Ekle</Button></Table.Cell> onclick'e bu fonksiyonu ata diyorum

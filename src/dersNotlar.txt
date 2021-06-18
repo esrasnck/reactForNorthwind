@@ -19,3 +19,5 @@ biz buraya iki şey gönderiyoruz aslında. 1) aksiyonun tipini, 2.sinde de veri
 
 
 // cqrs(comment query request pattern) = bir fonksiyon'u parametre olarak gönderiyoruz. comment pattern implementasyonu => araştır ?
+
+// aksiyonlara abone olmak için kullanılan hook : useDispatch

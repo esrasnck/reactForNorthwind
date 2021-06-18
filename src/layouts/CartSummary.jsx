@@ -14,7 +14,7 @@ const {cartItems} = useSelector(state => state.cart)  // state deki cartItems'i 
                 {
                   cartItems.map((cartItem)=> (
 
-                      <Dropdown.Item>
+                      <Dropdown.Item key={cartItem.product.id}>
                         {cartItem.product.productName}
                         <Label>{cartItem.quantity}</Label>
                       </Dropdown.Item>
