@@ -1,5 +1,4 @@
 import React from "react";
-import CartSummary from "./CartSummary";
 import { Menu } from 'semantic-ui-react';
 
 export default function Categories() {
